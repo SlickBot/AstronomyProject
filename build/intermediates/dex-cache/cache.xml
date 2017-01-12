@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
+        <dex dex="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.0.1_1021ebba7ffbc6bbe77e26dbb87c1cd5e714dbbd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\SlickyPC\AppData\Local\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
+        <dex dex="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.0.1_efc441c7bdbbcb4955292b1b803a8135241f7559\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
+        <dex dex="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.0.1_02418daf3407801cfb7146959db92aa0e32541d1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
+        <dex dex="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.0.1_70bad74f5ec75686a64ab2f282c9df6abbcfcb92\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
+        <dex dex="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_7ce87203ff7367e1e77e46d1755148a91386c05d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
+        <dex dex="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.0.1_aff9405cafe15ed29254eb2444c44f0c84ca23df\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
+        <dex dex="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.0.1_387bc5e02b4debf75054b75945eff6aca0b6f530\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
+        <dex dex="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.0.1_a37ebafdfd69ee3c5776fbfcf7dea0c4e9636d80\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
+        <dex dex="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_5f90644417bc264fa22ec380452aa80132fd38d3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f83b00041ecfba705603fec40363416c7de69719">
+        <dex dex="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_8f78e39c3a20415c2dfd58450cb1d3d80698e7c7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_64b0f31deb7bc838960566082b9cc87f7fc85a19\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
+        <dex dex="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_7c28b6d8f8656d9be8e437444074d339a9389b48\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
+        <dex dex="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.0.1_9b9a1c8be17a4e2e86d1085d4e6b94669c5bdc07\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="71981f6509b13ef7a1d54f220c15b9a70f33b11b">
+        <dex dex="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_bf9a7e3fe8a5342d8fe54003a7a73d03286e2b22\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="94aeca97511c7a8fa534e82982c9507bd4a4e583">
+        <dex dex="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_8f7b2d0ff6c4481e6c8462aeec95e8cca80809a6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.0.1_8f255f31c0e80b1ecf5607a5d3151aefe30ef372\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
+        <dex dex="C:\Delo\Kotlin\AstronomyProject\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.0.1_ca12f962742634560fb1fef9ca20923441d30507\classes.dex" />
+    </item>
+
+</items>
