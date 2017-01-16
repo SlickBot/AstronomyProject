@@ -21,10 +21,10 @@ define("CSS_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "static/css/");
 $path = isset($_SERVER["PATH_INFO"]) ? trim($_SERVER["PATH_INFO"], "/") : "";
 
 /* Uncomment to see the contents of variables
-var_dump(BASE_URL);
-var_dump(IMAGES_URL);
-var_dump(CSS_URL);
-var_dump($path);
+    var_dump(BASE_URL);
+    var_dump(IMAGES_URL);
+    var_dump(CSS_URL);
+    var_dump($path);
 exit(); */
 
 $urls = [
@@ -76,7 +76,7 @@ try {
     }
 } catch (Exception $e) {
     echo "An error occurred: <pre>$e</pre>";
-    // ViewHelper::error404();
+//    ViewHelper::error404();
 }
 
 /*
@@ -98,6 +98,7 @@ try {
                 echo $ime;
 
                 $query = "SELECT * FROM uporabnik where IME like '$ime'";
+
                 $stmt = $dbh->prepare($query);
                 $stmt->bindValue(1, $_POST["uname"]);
                 $stmt->bindValue(2, md5($_POST["password"]));

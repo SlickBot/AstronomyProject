@@ -13,23 +13,41 @@ class ItemController {
         }
     }
 
-    public static function showAddForm($values = ["NAZIV_ARTIKLA" => "", "CENA" => "",
-        "SIFRA_ARTIKLA" => "", "ENOTA_MER" => "", "ID_SKUPINE" => "", "ID_NAROCILA" => "",
-         "PROIZVAJALEC" => ""]) {
+    public static function showAddForm($values = [
+        "NAZIV_ARTIKLA" => "",
+        "CENA" => "",
+        "SIFRA_ARTIKLA" =>"",
+        "ENOTA_MER" => "",
+        "ID_SKUPINE" => "",
+        "ID_NAROCILA" => "",
+        "PROIZVAJALEC" => "",
+        "OPIS" => "",
+        "URL" => ""
+    ]) {
         ViewHelper::render("view/Item-add.php", $values);
     }
 
     public static function add() {
-        $validData = isset($_POST["ID_SKUPINE"]) && !empty($_POST["ID_SKUPINE"]) &&
-                isset($_POST["PROIZVAJALEC"]) && !empty($_POST["PROIZVAJALEC"]) &&
-                isset($_POST["ENOTA_MER"]) && !empty($_POST["ENOTA_MER"]) &&
-                isset($_POST["ID_NAROCILA"]) && !empty($_POST["ID_NAROCILA"]) &&
-                isset($_POST["NAZIV_ARTIKLA"]) && !empty($_POST["NAZIV_ARTIKLA"]) &&
-                isset($_POST["CENA"]) && !empty($_POST["CENA"]);
+        $validData =
+            isset($_POST["ID_SKUPINE"])     && !empty($_POST["ID_SKUPINE"]) &&
+            isset($_POST["PROIZVAJALEC"])   && !empty($_POST["PROIZVAJALEC"]) &&
+            isset($_POST["ENOTA_MER"])      && !empty($_POST["ENOTA_MER"]) &&
+            isset($_POST["NAZIV_ARTIKLA"])  && !empty($_POST["NAZIV_ARTIKLA"]) &&
+            isset($_POST["CENA"])           && !empty($_POST["CENA"] &&
+            isset($_POST["URL"])            && !empty($_POST["URL"]) &&
+            isset($_POST["OPIS"])           && !empty($_POST["OPIS"]));
 
         if ($validData) {
-            ItemDB::insert($_POST["SIFRA_ARTIKLA"], $_POST["ID_SKUPINE"], $_POST["ID_NAROCILA"], $_POST["NAZIV_ARTIKLA"],$_POST["CENA"],
-                    $_POST["PROIZVAJALEC"],$_POST["ENOTA_MER"] );
+            ItemDB::insert(
+                $_POST["SIFRA_ARTIKLA"],
+                $_POST["ID_SKUPINE"],
+                $_POST["NAZIV_ARTIKLA"],
+                $_POST["CENA"],
+                $_POST["PROIZVAJALEC"],
+                $_POST["ENOTA_MER"],
+                $_POST["OPIS"],
+                $_POST["URL"]
+            );
             ViewHelper::redirect(BASE_URL . "item");
         } else {
             self::showAddForm($_POST);
@@ -45,23 +63,24 @@ class ItemController {
     }
 
     public static function edit() {
-        $validData = isset($_POST["ID_SKUPINE"]) && !empty($_POST["ID_SKUPINE"]) &&
-                 isset($_POST["SIFRA_ARTIKLA"]) && !empty($_POST["SIFRA_ARTIKLA"]) &&
-                isset($_POST["PROIZVAJALEC"]) && !empty($_POST["PROIZVAJALEC"]) &&
-                isset($_POST["ENOTA_MER"]) && !empty($_POST["ENOTA_MER"]) &&
-                isset($_POST["ID_NAROCILA"]) && !empty($_POST["ID_NAROCILA"]) &&
-                isset($_POST["NAZIV_ARTIKLA"]) && !empty($_POST["NAZIV_ARTIKLA"]) &&
-                isset($_POST["CENA"]) && !empty($_POST["CENA"]);
+        $validData =
+            isset($_POST["ID_SKUPINE"])     && !empty($_POST["ID_SKUPINE"]) &&
+            isset($_POST["SIFRA_ARTIKLA"])  && !empty($_POST["SIFRA_ARTIKLA"]) &&
+            isset($_POST["PROIZVAJALEC"])   && !empty($_POST["PROIZVAJALEC"]) &&
+            isset($_POST["ENOTA_MER"])      && !empty($_POST["ENOTA_MER"]) &&
+            isset($_POST["NAZIV_ARTIKLA"])  && !empty($_POST["NAZIV_ARTIKLA"]) &&
+            isset($_POST["OPIS"])           && !empty($_POST["OPIS"]) &&
+            isset($_POST["CENA"])           && !empty($_POST["CENA"]);
 
         if ($validData) {
             ItemDB::update(
                 $_POST["SIFRA_ARTIKLA"],
                 $_POST["ID_SKUPINE"],
-                $_POST["ID_NAROCILA"],
                 $_POST["NAZIV_ARTIKLA"],
                 $_POST["CENA"],
                 $_POST["PROIZVAJALEC"],
-                $_POST["ENOTA_MER"]
+                $_POST["ENOTA_MER"],
+                $_POST["OPIS"]
             );
             ViewHelper::redirect(BASE_URL . "item?id=" . $_POST["SIFRA_ARTIKLA"]);
         } else {
@@ -70,7 +89,9 @@ class ItemController {
     }
 
     public static function delete() {
-        $validDelete = isset($_POST["delete_confirmation"]) && isset($_POST["SIFRA_ARTIKLA"]) && !empty($_POST["SIFRA_ARTIKLA"]);
+        $validDelete =
+            isset($_POST["delete_confirmation"]) &&
+            isset($_POST["SIFRA_ARTIKLA"]) && !empty($_POST["SIFRA_ARTIKLA"]);
 
         if ($validDelete) {
             ItemDB::delete($_POST["SIFRA_ARTIKLA"]);
@@ -85,12 +106,14 @@ class ItemController {
 
         ViewHelper::redirect($url);
     }
+  /*  public static function getPicture(){
+        $validPic =  isset($_POST["SIFRA_ARTIKLA"]) && !empty($_POST["SIFRA_ARTIKLA"]);
 
-    public static function getPicture() {
-        
-    }
+        if ($validPic) {
+           
+            return ItemDB::getPiture($_POST["SIFRA_ARTIKLA"]);
+       
+        }
+    }*/
 
-    public static function helloWorld() {
-        echo "Hello world";
-    }
 }
