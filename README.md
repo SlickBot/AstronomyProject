@@ -51,7 +51,7 @@ Vmesnik naj omogoča:
     - Nakupovanje. To naj bo sestavljeno iz:
         - Pregledovanja artiklov trgovine; ✓
         - Dodajanja in odstranjevanja artiklov v košarico ter spreminjanja količine v košarici; ✓
-        - Zaključka nakupa. Tu se naj stranki prikaže povzetek kupljenih izdelkov s predračunom. Ko stranka naročilo potrdi, se to doda v čakalno vrsto neobdelanih naročil, kjer ga lahko v obravnavo prevzame Prodajalec. ?
+        - Zaključka nakupa. Tu se naj stranki prikaže povzetek kupljenih izdelkov s predračunom. Ko stranka naročilo potrdi, se to doda v čakalno vrsto neobdelanih naročil, kjer ga lahko v obravnavo prevzame Prodajalec. ✓
     - Dostop do seznama preteklih nakupov. Uporabnik lahko vidi vsa svoja pretekla naročila: oddana, potrjena in stornirana. ✓
     - Uporaba vmesnika Stranka je dovoljena le preko zavarovanega kanala. Odjemalca overite z uporabniškim imenom in geslom, ki naj bosta shranjena v SUPB. x
 
