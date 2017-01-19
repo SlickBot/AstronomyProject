@@ -5,34 +5,19 @@ package com.slicky.ep.astronomy.model;
  */
 public class CartItem {
 
-    public final int id;
+    public final StoreItem item;
     public int quantity;
 
-    public CartItem(int id, int quantity) {
-        this.id = id;
+    public CartItem(StoreItem item, int quantity) {
+        this.item = item;
         this.quantity = quantity;
         // todo: add StoreItem
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null) return false;
-        if (getClass() != o.getClass()) return false;
-
-        CartItem cartItem = (CartItem) o;
-        return id == cartItem.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return id;
-    }
-
-    @Override
     public String toString() {
         return "CartItem{" +
-                "id=" + id +
+                "item=" + item +
                 ", quantity=" + quantity +
                 '}';
     }

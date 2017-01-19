@@ -14,22 +14,6 @@ public class StoreItem implements Serializable {
     public String POT_SLIKE;
     public Double CENA;
 
-    public int quantity = 0;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        StoreItem storeItem = (StoreItem) o;
-        return ID_ARTIKLA.equals(storeItem.ID_ARTIKLA);
-    }
-
-    @Override
-    public int hashCode() {
-        return ID_ARTIKLA.hashCode();
-    }
-
     @Override
     public String toString() {
         return "StoreItem{" +
@@ -38,7 +22,6 @@ public class StoreItem implements Serializable {
                 ", OPIS='" + OPIS + '\'' +
                 ", POT_SLIKE='" + POT_SLIKE + '\'' +
                 ", CENA=" + CENA +
-                ", quantity=" + quantity +
                 '}';
     }
 }

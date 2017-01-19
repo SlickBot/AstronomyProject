@@ -6,6 +6,7 @@
 //import android.view.ViewGroup;
 //import android.widget.ArrayAdapter;
 //import com.slicky.ep.astronomy.R;
+//import com.slicky.ep.astronomy.model.CartItem;
 //import com.slicky.ep.astronomy.model.StoreItem;
 //
 //import java.util.ArrayList;
@@ -13,7 +14,7 @@
 ///**
 // * Created by slicky on 19.1.2017
 // */
-//public class CartAdapter extends ArrayAdapter<StoreItem> {
+//public class CartAdapter extends ArrayAdapter<CartItem> {
 //
 //    private final Context context;
 //    private final LayoutInflater inflater;
@@ -27,7 +28,7 @@
 //
 //    @Override
 //    public View getView(int position, View convertView, ViewGroup parent) {
-//        final StoreItem item = getItem(position);
+//        final CartItem item = getItem(position);
 //
 //        if (convertView == null)
 //            convertView = inflater.inflate(

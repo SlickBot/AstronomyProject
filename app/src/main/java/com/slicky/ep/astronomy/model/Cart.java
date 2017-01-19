@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by SlickyPC on 16.1.2017
  */
-public class Cart extends ArrayList<StoreItem> {
+public class Cart extends ArrayList<CartItem> {
 
     public static void main(String[] args) {
         Cart cart = new Cart();
@@ -22,23 +22,22 @@ public class Cart extends ArrayList<StoreItem> {
         cart.add(item1, 2);
         cart.add(item2, 4);
 
-        for (StoreItem item : cart)
+        for (CartItem item : cart)
             System.out.println(item);
     }
 
     public void add(StoreItem item, int value) {
-        StoreItem inCart = find(item);
+        CartItem inCart = find(item);
         if (inCart != null) {
             inCart.quantity += value;
         } else {
-            item.quantity = value;
-            add(item);
+            add(new CartItem(item, value));
         }
     }
 
-    private StoreItem find(StoreItem item) {
-        for (StoreItem inCart : this)
-            if (inCart.ID_ARTIKLA.equals(item.ID_ARTIKLA))
+    private CartItem find(StoreItem item) {
+        for (CartItem inCart : this)
+            if (inCart.item.ID_ARTIKLA.equals(item.ID_ARTIKLA))
                 return inCart;
         return null;
     }
