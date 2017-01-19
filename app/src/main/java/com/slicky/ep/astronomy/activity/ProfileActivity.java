@@ -2,29 +2,30 @@ package com.slicky.ep.astronomy.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.slicky.ep.astronomy.R;
-import com.slicky.ep.astronomy.RestService;
+import com.slicky.ep.astronomy.tools.RestService;
+import com.slicky.ep.astronomy.tools.StoreUtils;
+import com.slicky.ep.astronomy.callback.StoreEditCallback;
+import com.slicky.ep.astronomy.callback.StoreUserCallback;
 import com.slicky.ep.astronomy.model.Login;
 import com.slicky.ep.astronomy.model.StoreUser;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-import java.io.IOException;
+public class ProfileActivity extends AppCompatActivity {
 
-public class ProfileActivity extends AppCompatActivity
-        implements Callback<StoreUser> {
-    private static final String TAG = ProfileActivity.class.getCanonicalName();
+    private TextView idField;
+    private EditText nameField;
+    private EditText surnameField;
+    private EditText emailField;
+    private EditText telephoneField;
+    private EditText addressField;
+    private Button editButton;
 
-    private TextView id;
-    private TextView ime;
-    private TextView priimek;
-    private TextView email;
-    private TextView telefon;
-    private TextView naslov;
+    private StoreUserCallback userCallback;
+    private StoreEditCallback editCallback;
 
     private Login login;
 
@@ -33,52 +34,105 @@ public class ProfileActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        id = (TextView) findViewById(R.id.tv_id);
-        ime = (TextView) findViewById(R.id.tv_ime);
-        priimek = (TextView) findViewById(R.id.tv_priimek);
-        email = (TextView) findViewById(R.id.tv_email);
-        telefon = (TextView) findViewById(R.id.tv_tele);
-        naslov = (TextView) findViewById(R.id.tv_naslov);
+        idField = (TextView) findViewById(R.id.tv_id);
+        nameField = (EditText) findViewById(R.id.tv_ime);
+        surnameField = (EditText) findViewById(R.id.tv_priimek);
+        emailField = (EditText) findViewById(R.id.tv_email);
+        telephoneField = (EditText) findViewById(R.id.tv_tele);
+        addressField = (EditText) findViewById(R.id.tv_naslov);
+        editButton = (Button) findViewById(R.id.b_edit);
+
+        userCallback = new StoreUserCallback(this);
+        editCallback = new StoreEditCallback(this);
 
         login = Login.getInstance();
 
         RestService.getInstance()
                    .getUser(login.getCredentials().getUsername(), login.getCredentials().getHash())
-                   .enqueue(ProfileActivity.this);
+                   .enqueue(userCallback);
     }
 
-    private void displayUser(StoreUser user) {
-        id.setText(user.ID_UPORABNIK);
-        ime.setText(user.IME);
-        priimek.setText(user.PRIIMEK);
-        email.setText(user.ELEKTRONSKI_NASLOV);
-        telefon.setText(user.TELEFONSKA_STEVILKA);
-        naslov.setText(user.NASLOV);
+    public void displayUser(StoreUser user) {
+        idField.setText(user.ID_UPORABNIK);
+        nameField.setText(user.IME);
+        surnameField.setText(user.PRIIMEK);
+        emailField.setText(user.ELEKTRONSKI_NASLOV);
+        telephoneField.setText(user.TELEFONSKA_STEVILKA);
+        addressField.setText(user.NASLOV);
     }
 
-    @Override
-    public void onResponse(Call<StoreUser> call, Response<StoreUser> response) {
-        final StoreUser user = response.body();
-
-        if (response.isSuccessful()) {
-            displayUser(user);
-        } else {
-            String errorMessage;
-            try {
-                errorMessage = "An error occurred: " + response.errorBody().string();
-            } catch (IOException e) {
-                errorMessage = "An error occurred: error while decoding the error message.";
-            }
-            Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
-            Log.e(TAG, errorMessage);
-            finish();
+    public void onEdit(View view) {
+        if (validate()) {
+            RestService.getInstance()
+                    .editUser(
+                            login.getCredentials().getUsername(),
+                            login.getCredentials().getHash(),
+                            idField.getText().toString(),
+                            nameField.getText().toString(),
+                            surnameField.getText().toString(),
+                            emailField.getText().toString(),
+                            telephoneField.getText().toString(),
+                            addressField.getText().toString()
+                    ).enqueue(editCallback);
         }
     }
 
-    @Override
-    public void onFailure(Call<StoreUser> call, Throwable t) {
-        Toast.makeText(this, t.getMessage(), Toast.LENGTH_SHORT).show();
-        Log.w(TAG, "Error: " + t.getMessage(), t);
-        finish();
+
+    private boolean validate() {
+        // reset errors
+        nameField.setError(null);
+        surnameField.setError(null);
+        emailField.setError(null);
+        telephoneField.setError(null);
+        addressField.setError(null);
+
+        boolean success = true;
+        View focusView = null;
+
+        // validate password length
+        CharSequence name = nameField.getText();
+        if (name.length() < 4 || name.length() > 50) {
+            nameField.setError("Name has wrong length! (4-50)");
+            focusView = nameField;
+            success = false;
+        }
+
+        // validate password length
+        CharSequence surname = surnameField.getText();
+        if (surname.length() < 4 || surname.length() > 50) {
+            surnameField.setError("Surname has wrong length! (4-50)");
+            focusView = surnameField;
+            success = false;
+        }
+
+        // validate password length
+        CharSequence email = emailField.getText();
+        if (!StoreUtils.isValidEmail(email)) {
+            emailField.setError("Entered text is not valid email!");
+            focusView = emailField;
+            success = false;
+        }
+
+        // validate password length
+        CharSequence telephone = telephoneField.getText();
+        if (telephone.length() < 4 || telephone.length() > 50) {
+            telephoneField.setError("Telephone has wrong length! (4-50)");
+            focusView = telephoneField;
+            success = false;
+        }
+
+        // validate password length
+        CharSequence address = addressField.getText();
+        if (address.length() < 4 || address.length() > 50) {
+            addressField.setError("Telephone has wrong length! (4-50)");
+            focusView = addressField;
+            success = false;
+        }
+
+        // focus view with error
+        if (!success)
+            focusView.requestFocus();
+
+        return success;
     }
 }

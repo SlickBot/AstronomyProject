@@ -1,9 +1,6 @@
-package com.slicky.ep.astronomy;
+package com.slicky.ep.astronomy.tools;
 
-import com.slicky.ep.astronomy.model.StoreItem;
-import com.slicky.ep.astronomy.model.StoreLogin;
-import com.slicky.ep.astronomy.model.StorePurchase;
-import com.slicky.ep.astronomy.model.StoreUser;
+import com.slicky.ep.astronomy.model.*;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -46,6 +43,17 @@ public class RestService {
         @POST("user")
         Call<StoreUser> getUser(@Field("username") String username,
                                 @Field("hash") String hash);
+
+        @FormUrlEncoded
+        @POST("edit_user")
+        Call<StoreEdit> editUser(@Field("username") String username,
+                                 @Field("hash") String hash,
+                                 @Field("id") String id,
+                                 @Field("name") String name,
+                                 @Field("surname") String surname,
+                                 @Field("email") String email,
+                                 @Field("telephone") String telephone,
+                                 @Field("address") String address);
 
         @FormUrlEncoded
         @POST("purchases")

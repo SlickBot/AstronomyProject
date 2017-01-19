@@ -1,4 +1,4 @@
-package com.slicky.ep.astronomy;
+package com.slicky.ep.astronomy.tools;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.slicky.ep.astronomy.R;
 import com.slicky.ep.astronomy.model.StoreItem;
 import com.squareup.picasso.Picasso;
 

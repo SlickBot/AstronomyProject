@@ -11,28 +11,23 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
-import com.slicky.ep.astronomy.ItemAdapter;
+import com.slicky.ep.astronomy.tools.ItemAdapter;
 import com.slicky.ep.astronomy.R;
-import com.slicky.ep.astronomy.RestService;
+import com.slicky.ep.astronomy.tools.RestService;
+import com.slicky.ep.astronomy.callback.StoreItemCallback;
 import com.slicky.ep.astronomy.model.Login;
 import com.slicky.ep.astronomy.model.StoreItem;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-import java.io.IOException;
 import java.util.List;
 
 public class BrowseActivity extends AppCompatActivity
-        implements Callback<List<StoreItem>>, NavigationView.OnNavigationItemSelectedListener {
-    private static final String TAG = BrowseActivity.class.getCanonicalName();
+        implements NavigationView.OnNavigationItemSelectedListener {
+
     private static final int SIGN_IN_CODE = 0xABBA;
     static final int SIGN_IN_EXIT = 0xEFFE;
 
@@ -41,12 +36,16 @@ public class BrowseActivity extends AppCompatActivity
     private ItemAdapter adapter;
     private ListView list;
 
+    private StoreItemCallback itemCallback;
+
     private Login login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browse);
+
+        itemCallback = new StoreItemCallback(this);
 
         login = Login.getInstance();
 
@@ -88,13 +87,15 @@ public class BrowseActivity extends AppCompatActivity
     }
 
     private void setActionButton() {
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showCart();
-            }
-        });
+        if (login.isLoggedIn()) {
+            FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showCart();
+                }
+            });
+        }
     }
 
     private void setListView() {
@@ -121,7 +122,7 @@ public class BrowseActivity extends AppCompatActivity
             public void onRefresh() {
                 RestService.getInstance()
                         .getItems()
-                        .enqueue(BrowseActivity.this);
+                        .enqueue(itemCallback);
             }
         };
 
@@ -207,39 +208,20 @@ public class BrowseActivity extends AppCompatActivity
     }
 
     @Override
-    public void onResponse(Call<List<StoreItem>> call, Response<List<StoreItem>> response) {
-        final List<StoreItem> hits = response.body();
-
-        if (response.isSuccessful()) {
-            Log.i(TAG, "Hits: " + hits.size());
-            adapter.clear();
-            adapter.addAll(hits);
-        } else {
-            String errorMessage;
-            try {
-                errorMessage = "An error occurred: " + response.errorBody().string();
-            } catch (IOException e) {
-                errorMessage = "An error occurred: error while decoding the error message.";
-            }
-            Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
-            Log.e(TAG, errorMessage);
-        }
-        container.setRefreshing(false);
-    }
-
-    @Override
-    public void onFailure(Call<List<StoreItem>> call, Throwable t) {
-        Toast.makeText(this, t.getMessage(), Toast.LENGTH_SHORT).show();
-        Log.w(TAG, "Error: " + t.getMessage(), t);
-        container.setRefreshing(false);
-    }
-
-    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == SIGN_IN_CODE) {
             if (resultCode == SIGN_IN_EXIT) {
                 finish();
             }
         }
+    }
+
+    public void refreshItems(List<StoreItem> items) {
+        adapter.clear();
+        adapter.addAll(items);
+    }
+
+    public void stopRefreshing() {
+        container.setRefreshing(false);
     }
 }

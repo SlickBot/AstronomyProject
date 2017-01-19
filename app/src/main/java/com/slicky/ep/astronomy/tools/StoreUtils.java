@@ -1,7 +1,9 @@
-package com.slicky.ep.astronomy;
+package com.slicky.ep.astronomy.tools;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -61,5 +63,9 @@ public class StoreUtils {
                     focused.getWindowToken(),
                     InputMethodManager.HIDE_NOT_ALWAYS);
         }
+    }
+
+    public static boolean isValidEmail(CharSequence email) {
+        return email != null&& Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 }
