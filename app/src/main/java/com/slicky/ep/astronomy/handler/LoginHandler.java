@@ -1,19 +1,19 @@
-package com.slicky.ep.astronomy.model;
+package com.slicky.ep.astronomy.handler;
 
 /**
  * Created by SlickyPC on 16.1.2017
  */
-public class Login {
-    private static final Login instance = new Login();
+public class LoginHandler {
+    private static final LoginHandler instance = new LoginHandler();
 
     private Credentials credentials;
     private boolean loggedIn;
 
-    private Login() {
+    private LoginHandler() {
         loggedIn = false;
     }
 
-    public static Login getInstance() {
+    public static LoginHandler getInstance() {
         return instance;
     }
 

@@ -66,6 +66,6 @@ public class StoreUtils {
     }
 
     public static boolean isValidEmail(CharSequence email) {
-        return email != null&& Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        return email != null && Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 }

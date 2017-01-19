@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.slicky.ep.astronomy.R;
 import com.slicky.ep.astronomy.tools.StoreUtils;
 import com.slicky.ep.astronomy.model.StoreItem;
-import com.slicky.ep.astronomy.tools.TextAdapter;
+import com.slicky.ep.astronomy.tools.ChangeListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.Locale;
@@ -55,7 +55,7 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     private void setMinimumValue(final EditText et) {
-        et.addTextChangedListener(new TextAdapter() {
+        et.addTextChangedListener(new ChangeListener() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {

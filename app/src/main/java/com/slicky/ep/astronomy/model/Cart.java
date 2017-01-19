@@ -1,51 +1,45 @@
 package com.slicky.ep.astronomy.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by SlickyPC on 16.1.2017
  */
-public class Cart {
-
-    private final List<CartItem> items;
-
-    public Cart() {
-        items = new ArrayList<>();
-    }
+public class Cart extends ArrayList<StoreItem> {
 
     public static void main(String[] args) {
         Cart cart = new Cart();
 
-        CartItem i1 = new CartItem(1, 3);
-        CartItem i2 = new CartItem(2, 5);
+        StoreItem item1 = new StoreItem();
+        StoreItem item2 = new StoreItem();
 
-        cart.addItem(i1);
-        cart.addItem(i2);
+        item1.ID_ARTIKLA = "1";
+        item1.NAZIV_ARTIKLA = "qwe";
 
-        for (CartItem item : cart.items) {
+        item2.ID_ARTIKLA = "1";
+        item2.NAZIV_ARTIKLA = "qwe";
+
+        cart.add(item1, 2);
+        cart.add(item2, 4);
+
+        for (StoreItem item : cart)
             System.out.println(item);
-        }
     }
 
-    public void addItem(CartItem item) {
-        CartItem inCart = findItem(item);
+    public void add(StoreItem item, int value) {
+        StoreItem inCart = find(item);
         if (inCart != null) {
-            inCart.quantity += item.quantity;
+            inCart.quantity += value;
         } else {
-            items.add(item);
+            item.quantity = value;
+            add(item);
         }
     }
 
-    private CartItem findItem(CartItem item) {
-        for (CartItem inCart : items) {
-            if (inCart.id == item.id)
+    private StoreItem find(StoreItem item) {
+        for (StoreItem inCart : this)
+            if (inCart.ID_ARTIKLA.equals(item.ID_ARTIKLA))
                 return inCart;
-        }
         return null;
-    }
-
-    public List<CartItem> getItems() {
-        return items;
     }
 }

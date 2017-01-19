@@ -7,11 +7,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.slicky.ep.astronomy.R;
-import com.slicky.ep.astronomy.tools.RestService;
+import com.slicky.ep.astronomy.rest.RestService;
 import com.slicky.ep.astronomy.tools.StoreUtils;
 import com.slicky.ep.astronomy.callback.StoreEditCallback;
 import com.slicky.ep.astronomy.callback.StoreUserCallback;
-import com.slicky.ep.astronomy.model.Login;
+import com.slicky.ep.astronomy.handler.LoginHandler;
 import com.slicky.ep.astronomy.model.StoreUser;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -27,7 +27,7 @@ public class ProfileActivity extends AppCompatActivity {
     private StoreUserCallback userCallback;
     private StoreEditCallback editCallback;
 
-    private Login login;
+    private LoginHandler login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class ProfileActivity extends AppCompatActivity {
         userCallback = new StoreUserCallback(this);
         editCallback = new StoreEditCallback(this);
 
-        login = Login.getInstance();
+        login = LoginHandler.getInstance();
 
         RestService.getInstance()
                    .getUser(login.getCredentials().getUsername(), login.getCredentials().getHash())

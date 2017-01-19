@@ -11,6 +11,7 @@ public class CartItem {
     public CartItem(int id, int quantity) {
         this.id = id;
         this.quantity = quantity;
+        // todo: add StoreItem
     }
 
     @Override

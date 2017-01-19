@@ -6,11 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import com.slicky.ep.astronomy.R;
-import com.slicky.ep.astronomy.tools.RestService;
+import com.slicky.ep.astronomy.rest.RestService;
 import com.slicky.ep.astronomy.tools.StoreUtils;
 import com.slicky.ep.astronomy.callback.StoreLoginCallback;
-import com.slicky.ep.astronomy.model.Login;
-import com.slicky.ep.astronomy.model.Login.Credentials;
+import com.slicky.ep.astronomy.handler.LoginHandler;
+import com.slicky.ep.astronomy.handler.LoginHandler.Credentials;
 
 public class SignInActivity extends AppCompatActivity {
     private static final String TAG = SignInActivity.class.getCanonicalName();
@@ -19,7 +19,7 @@ public class SignInActivity extends AppCompatActivity {
     private TextView passwordField;
 
     private StoreLoginCallback loginCallback;
-    private Login login;
+    private LoginHandler login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class SignInActivity extends AppCompatActivity {
 
         loginCallback = new StoreLoginCallback(this);
 
-        login = Login.getInstance();
+        login = LoginHandler.getInstance();
     }
 
     public void onSignInClick(View view) {

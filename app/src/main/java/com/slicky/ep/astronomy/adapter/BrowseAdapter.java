@@ -1,4 +1,4 @@
-package com.slicky.ep.astronomy.tools;
+package com.slicky.ep.astronomy.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,12 +17,12 @@ import java.util.Locale;
 /**
  * Created by SlickyPC on 14.1.2017
  */
-public class ItemAdapter extends ArrayAdapter<StoreItem> {
+public class BrowseAdapter extends ArrayAdapter<StoreItem> {
     private Context context;
     private LayoutInflater inflater;
 
-    public ItemAdapter(Context context) {
-        super(context, R.id.items, new ArrayList<StoreItem>());
+    public BrowseAdapter(Context context) {
+        super(context, R.id.lv_browse, new ArrayList<StoreItem>());
 
         this.context = context;
         inflater = LayoutInflater.from(context);
@@ -32,9 +32,11 @@ public class ItemAdapter extends ArrayAdapter<StoreItem> {
     public View getView(int position, View convertView, ViewGroup parent) {
         final StoreItem item = getItem(position);
 
-        if (null == convertView) {
-            convertView = inflater.inflate(R.layout.item_element, parent, false);
-        }
+        if (convertView == null)
+            convertView = inflater.inflate(
+                    R.layout.browse_item,
+                    parent,
+                    false);
 
         ImageView imageView = (ImageView) convertView.findViewById(R.id.item_image);
         TextView title = (TextView) convertView.findViewById(R.id.item_title);
@@ -48,7 +50,7 @@ public class ItemAdapter extends ArrayAdapter<StoreItem> {
 
         // fill text
         title.setText(item.NAZIV_ARTIKLA);
-        price.setText(String.format(Locale.getDefault(), "%.3f€", item.CENA));
+        price.setText(String.format(Locale.getDefault(), "%.2f€", item.CENA));
 
         return convertView;
     }

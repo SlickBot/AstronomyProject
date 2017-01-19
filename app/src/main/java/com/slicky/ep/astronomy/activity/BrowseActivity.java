@@ -16,11 +16,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import com.slicky.ep.astronomy.tools.ItemAdapter;
+import com.slicky.ep.astronomy.adapter.BrowseAdapter;
 import com.slicky.ep.astronomy.R;
-import com.slicky.ep.astronomy.tools.RestService;
+import com.slicky.ep.astronomy.rest.RestService;
 import com.slicky.ep.astronomy.callback.StoreItemCallback;
-import com.slicky.ep.astronomy.model.Login;
+import com.slicky.ep.astronomy.handler.LoginHandler;
 import com.slicky.ep.astronomy.model.StoreItem;
 
 import java.util.List;
@@ -33,12 +33,12 @@ public class BrowseActivity extends AppCompatActivity
 
     private NavigationView navigationView;
     private SwipeRefreshLayout container;
-    private ItemAdapter adapter;
+    private BrowseAdapter adapter;
     private ListView list;
 
     private StoreItemCallback itemCallback;
 
-    private Login login;
+    private LoginHandler login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class BrowseActivity extends AppCompatActivity
 
         itemCallback = new StoreItemCallback(this);
 
-        login = Login.getInstance();
+        login = LoginHandler.getInstance();
 
         setToolbar();
         setNavBar();
@@ -99,9 +99,9 @@ public class BrowseActivity extends AppCompatActivity
     }
 
     private void setListView() {
-        adapter = new ItemAdapter(this);
+        adapter = new BrowseAdapter(this);
 
-        list = (ListView) findViewById(R.id.items);
+        list = (ListView) findViewById(R.id.lv_browse);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
