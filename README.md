@@ -93,7 +93,7 @@ Z implementacijo razširjenih storitev lahko zvišate oceno. Pri vsaki storitvi 
 
     - (5%) Vodenje dnevnika uporabnikov Administrator in Prodajalec. ✓
     - (5%) Registracija strank z uporabo filtriranja CAPTCHA. ✓
-    - (5%) Registracija strank z uporabo potrditvenega e-maila. x
+    - (5%) Registracija strank z uporabo potrditvenega e-maila. ✓
 
 **Uporabniški vmesnik**
 
