@@ -10,7 +10,7 @@ class Cart {
         }
 
         $ids = array_keys($_SESSION["cart"]);
-        $cart =ItemDB::getForIds($ids);
+        $cart = ItemDB::getForIds($ids);
 
         // Adds a quantity field to each book in the list
         foreach ($cart as &$item) {
@@ -28,7 +28,7 @@ class Cart {
                 $_SESSION["cart"][$id] += 1;
             } else {
                 $_SESSION["cart"][$id] = 1;
-            }            
+            }
         }
     }
 
@@ -54,4 +54,13 @@ class Cart {
             return $total + $item["CENA"] * $item["quantity"];
         }, 0);
     }
+
+    /*   public static function picture(){
+      $items =ItemDB::getAll();
+
+      // Adds a quantity field to each book in the list
+      foreach ($items as &$item) {
+      $item["url"] = ItemDB::getPiture([$item["SIFRA_ARTIKLA"]]);
+      }
+      } */
 }

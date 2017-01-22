@@ -1,0 +1,31 @@
+
+input[type=text],[type=password],[type=submit] {
+    width: 255px;
+    padding: 10px;
+    margin: 3px;
+    display: inline-block;
+    border: 2px dotted blue;
+    border-radius: 12px;
+    box-sizing: border-box;
+
+}
+body {
+    color:white;
+    background-image: url("ozadje.jpg");
+}
+
+.error {
+    margin: 0 auto;
+    width: 400px;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    color:red;
+}
+
+div {
+    color:black;
+    width: 50%;
+    margin: 0 auto;
+    background-color: lightblue;
+}

@@ -1,0 +1,43 @@
+body {
+    font-size:150%;
+    background: #D38312; 
+    background: -webkit-linear-gradient(to left, #D38312 , #A83279); 
+    background: linear-gradient(to left, #D38312 , #A83279); 
+    text-align: center;
+}
+
+#main,input[type=text],[type=password],[type=submit],[type=number],button{
+  border-radius: 4px;
+  background: #D38312; 
+  background: -webkit-linear-gradient(to left, #A83279, #D38312); 
+  background: linear-gradient(to left,#A83279 , #D38312); 
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 20%;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  border: 2px solid black;
+  display: table-cell;
+  white-space: nowrap;
+}
+
+a:link, a:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+input[type=radio]:checked ~ label{
+  color: #8A2BE2;
+}
+
+input[type="radio"] {
+   display: none;
+}

@@ -43,4 +43,29 @@ class StoreController {
         ViewHelper::redirect(BASE_URL . "store");
     }
 
+    public static function emptyCart() {
+        Cart::purge();
+    }
+
+    public static function narocilo() {
+        $vars = [
+            "items" => ItemDB::getAll(),
+            "cart" => Cart::getAll(),
+            "total" => Cart::total()
+        ];
+        ViewHelper::render("view/zakljucek.php", [ $vars]);
+    }
+
+    public static function posamezno() {
+        ViewHelper::render("view/posamezno.php", []);
+    }
+
+    public static function storaniraj() {
+        ViewHelper::render("view/Storaniraj.php", []);
+    }
+
+    public static function potrjeno() {
+        ViewHelper::render("view/Potrjeno.php", []);
+    }
+
 }

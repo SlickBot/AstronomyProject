@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 
-<link rel="stylesheet" type="text/css" href="<?= CSS_URL . "style.css" ?>">
+<link rel="stylesheet" type="text/css" href="<?= CSS_URL . "user.css" ?>">
 <meta charset="UTF-8" />
-<title>Store</title>
+<title>Artikli</title>
 
-<h1>All items</h1>
+<h1>Artikli</h1>
 
 <p>[
-<a href="<?= BASE_URL . "items" ?>">All items</a> |
-<a href="<?= BASE_URL . "item/add" ?>">Add new</a> |
-<a href="<?= BASE_URL . "store" ?>">Item store</a>
-]</p>
+    <a href="<?= BASE_URL . "item" ?>">Vse stvari</a> |
+    <a href="<?= BASE_URL . "item/add" ?>">Dodaj</a> |
+    <a href="<?= BASE_URL . "store" ?>">Trgovina</a>
+    ]</p>
 
 <ul>
 
     <?php foreach ($items as $item): ?>
         <li><a href="<?= BASE_URL . "item?id=" . $item["SIFRA_ARTIKLA"] ?>"><?= $item["NAZIV_ARTIKLA"] ?>: 
-        	<?= $item["PROIZVAJALEC"] ?> (<?= $item["ENOTA_MER"] ?>)</a></li>
+                <?= $item["PROIZVAJALEC"] ?> (<?= $item["ENOTA_MER"] ?>)</a></li>
     <?php endforeach; ?>
 
 </ul>

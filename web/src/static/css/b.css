@@ -1,0 +1,52 @@
+button, input[type=submit] {
+ margin: 20px;
+ background-color: #85144b;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    /*display: inline-block;*/
+    font-size: 16px;
+    margin: 20px;
+    cursor: pointer;
+    width: 200px;
+    left: 20px;
+    text-decoration:underline;
+    background-repeat: no-repeat;
+}
+
+form {
+ border: 2px solid black;
+ position: relative;
+ top: 100px;
+ left: 40%;
+ background: -moz-linear-gradient(red, yellow); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(red, yellow); /*Standard syntax (must be last) */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+/*    height: 500px;*/
+ width: 500px;
+ align-content: center;
+}
+
+input[type=text],[type="password"]{
+ /*margin: 20px;*/
+ width: 85%;
+ height: 40px;
+ margin-left: 20px;
+ font-size: 150%;
+}
+body {
+ margin: 20px;
+ background-image: url("ozadje.jpg");
+ font-family: Lucida Console, Monaco, monospace;
+ font-size: 150%;
+ margin: 0 auto;
+ text-align: center;
+
+}
+label {
+  padding-top: 20px;
+  display: block;
+ }
