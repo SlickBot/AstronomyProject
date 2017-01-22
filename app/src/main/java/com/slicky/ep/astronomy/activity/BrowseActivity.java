@@ -16,12 +16,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import com.slicky.ep.astronomy.adapter.BrowseAdapter;
 import com.slicky.ep.astronomy.R;
-import com.slicky.ep.astronomy.rest.RestService;
-import com.slicky.ep.astronomy.callback.StoreItemCallback;
+import com.slicky.ep.astronomy.adapter.BrowseAdapter;
+import com.slicky.ep.astronomy.callback.StoreItemsCallback;
 import com.slicky.ep.astronomy.handler.LoginHandler;
 import com.slicky.ep.astronomy.model.StoreItem;
+import com.slicky.ep.astronomy.rest.RestService;
 
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class BrowseActivity extends AppCompatActivity
     private BrowseAdapter adapter;
     private ListView list;
 
-    private StoreItemCallback itemCallback;
+    private StoreItemsCallback itemCallback;
 
     private LoginHandler login;
 
@@ -45,7 +45,9 @@ public class BrowseActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browse);
 
-        itemCallback = new StoreItemCallback(this);
+        setTitle("Browse Items");
+
+        itemCallback = new StoreItemsCallback(this);
 
         login = LoginHandler.getInstance();
 
@@ -72,29 +74,31 @@ public class BrowseActivity extends AppCompatActivity
         final Menu menu = navigationView.getMenu();
 
         if (login.isLoggedIn()) {
-            menu.getItem(0).setVisible(false);
+            menu.getItem(0).setVisible(true);
             menu.getItem(1).setVisible(true);
             menu.getItem(2).setVisible(true);
-            menu.getItem(3).setVisible(true);
+            menu.getItem(3).setVisible(false);
             menu.getItem(4).setVisible(true);
         } else {
-            menu.getItem(0).setVisible(true);
+            menu.getItem(0).setVisible(false);
             menu.getItem(1).setVisible(false);
             menu.getItem(2).setVisible(false);
-            menu.getItem(3).setVisible(false);
+            menu.getItem(3).setVisible(true);
             menu.getItem(4).setVisible(false);
         }
     }
 
     private void setActionButton() {
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         if (login.isLoggedIn()) {
-            FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     showCart();
                 }
             });
+        } else {
+            fab.setVisibility(View.GONE);
         }
     }
 
@@ -126,7 +130,7 @@ public class BrowseActivity extends AppCompatActivity
             }
         };
 
-        container = (SwipeRefreshLayout) findViewById(R.id.container);
+        container = (SwipeRefreshLayout) findViewById(R.id.purchases_container);
         container.setOnRefreshListener(listener);
 
         // start first refresh
@@ -171,17 +175,15 @@ public class BrowseActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+    public void refreshItems(List<StoreItem> items) {
+        adapter.clear();
+        adapter.addAll(items);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
+    public void stopRefreshing() {
+        container.setRefreshing(false);
+    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -209,19 +211,16 @@ public class BrowseActivity extends AppCompatActivity
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == SIGN_IN_CODE) {
-            if (resultCode == SIGN_IN_EXIT) {
-                finish();
-            }
-        }
+        if (requestCode == SIGN_IN_CODE && resultCode == SIGN_IN_EXIT)
+            finish();
     }
 
-    public void refreshItems(List<StoreItem> items) {
-        adapter.clear();
-        adapter.addAll(items);
-    }
-
-    public void stopRefreshing() {
-        container.setRefreshing(false);
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START))
+            drawer.closeDrawer(GravityCompat.START);
+        else
+            super.onBackPressed();
     }
 }

@@ -11,7 +11,10 @@ public class CartItem {
     public CartItem(StoreItem item, int quantity) {
         this.item = item;
         this.quantity = quantity;
-        // todo: add StoreItem
+    }
+
+    public Double getTotal() {
+        return item.CENA * quantity;
     }
 
     @Override

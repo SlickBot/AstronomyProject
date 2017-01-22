@@ -1,11 +1,8 @@
 package com.slicky.ep.astronomy.callback;
 
 import com.slicky.ep.astronomy.activity.ProfileActivity;
+import com.slicky.ep.astronomy.handler.LoginHandler;
 import com.slicky.ep.astronomy.model.StoreUser;
-
-import android.util.Log;
-import android.widget.Toast;
-
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -14,11 +11,11 @@ import retrofit2.Response;
  */
 public class StoreUserCallback
         extends StoreCallback<StoreUser> {
-    private static final String TAG = StoreUserCallback.class.getCanonicalName();
 
     private ProfileActivity profileActivity;
 
     public StoreUserCallback(ProfileActivity profileActivity) {
+        super(profileActivity);
         this.profileActivity = profileActivity;
     }
 
@@ -30,14 +27,7 @@ public class StoreUserCallback
 
     @Override
     public void onAuthFail(Call<StoreUser> call, Response<StoreUser> response) {
-        // todo: log out
-        Toast.makeText(profileActivity, "Authentication failed!", Toast.LENGTH_SHORT).show();
-        Log.e(TAG, "Authentication failed!");
-    }
-
-    @Override
-    public void onFail(Call<StoreUser> call, Response<StoreUser> response, String message) {
-        Toast.makeText(profileActivity, "REST failed!", Toast.LENGTH_SHORT).show();
-        Log.e(TAG, "REST failed!");
+        super.onAuthFail(call, response);
+        LoginHandler.getInstance().signOut();
     }
 }

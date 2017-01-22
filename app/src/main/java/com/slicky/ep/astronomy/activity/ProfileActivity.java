@@ -34,6 +34,8 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        setTitle("Profile");
+
         idField = (TextView) findViewById(R.id.tv_id);
         nameField = (EditText) findViewById(R.id.tv_ime);
         surnameField = (EditText) findViewById(R.id.tv_priimek);

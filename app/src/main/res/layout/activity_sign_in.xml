@@ -19,7 +19,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
             android:padding="15dp"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:textColor="@color/colorTextPrimary"
             android:textColorHint="@color/colorTextSecondary"
             android:background="@color/colorPrimary"

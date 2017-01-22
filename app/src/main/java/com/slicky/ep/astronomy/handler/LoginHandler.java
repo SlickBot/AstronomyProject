@@ -28,6 +28,7 @@ public class LoginHandler {
     public void signOut() {
         this.loggedIn = false;
         this.credentials = null;
+        CartHandler.getInstance().reset();
     }
 
     public Credentials getCredentials() {
@@ -55,5 +56,4 @@ public class LoginHandler {
             return hash;
         }
     }
-
 }

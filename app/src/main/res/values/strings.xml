@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AstronomyProject</string>
+    <string name="app_name">Astronomy Project</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->

@@ -62,13 +62,6 @@
             android:orientation="horizontal"
             android:id="@+id/ll_add_to_cart">
 
-        <Button
-                android:text="Add to Cart"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:onClick="onAddToCart"/>
-
         <LinearLayout
                 android:layout_weight="1"
                 android:layout_width="0dp"
@@ -88,9 +81,17 @@
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
+                    android:textColor="@color/colorTextPrimary"
                     android:ems="10"
                     android:id="@+id/et_quantity"/>
         </LinearLayout>
+
+        <Button
+                android:text="Add to Cart"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:onClick="onAddToCart"/>
 
     </LinearLayout>
 

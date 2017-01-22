@@ -38,14 +38,14 @@ public class BrowseAdapter extends ArrayAdapter<StoreItem> {
                     parent,
                     false);
 
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.item_image);
-        TextView title = (TextView) convertView.findViewById(R.id.item_title);
-        TextView price = (TextView) convertView.findViewById(R.id.item_price);
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.browse_item_image);
+        TextView title = (TextView) convertView.findViewById(R.id.browse_item_title);
+        TextView price = (TextView) convertView.findViewById(R.id.browse_item_price);
 
         // fill image
         Picasso.with(context)
                 .load(item.POT_SLIKE)
-                .fit()
+//                .fit()
                 .into(imageView);
 
         // fill text

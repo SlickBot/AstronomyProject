@@ -1,11 +1,12 @@
 package com.slicky.ep.astronomy.tools;
 
 import android.content.Context;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import com.slicky.ep.astronomy.R;
 
 import java.security.MessageDigest;
 
@@ -67,5 +68,23 @@ public class StoreUtils {
 
     public static boolean isValidEmail(CharSequence email) {
         return email != null && Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    public static void showOkNotification(Context context, String title, String message) {
+        new AlertDialog.Builder(context)
+                .setTitle(title)
+                .setMessage(message)
+                .setNeutralButton(android.R.string.ok, null)
+                .setIcon(R.drawable.ic_done)
+                .show();
+    }
+
+    public static void showErrorNotification(Context context, String title, String message) {
+        new AlertDialog.Builder(context)
+                .setTitle(title)
+                .setMessage(message)
+                .setNeutralButton(android.R.string.ok, null)
+                .setIcon(android.R.drawable.ic_delete)
+                .show();
     }
 }

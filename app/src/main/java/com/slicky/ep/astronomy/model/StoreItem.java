@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Created by SlickyPC on 14.1.2017
  */
 public class StoreItem implements Serializable {
-    @NonNull public String ID_ARTIKLA;
+    @NonNull public int SIFRA_ARTIKLA;
     public String NAZIV_ARTIKLA;
     public String OPIS;
     public String POT_SLIKE;
@@ -17,7 +17,7 @@ public class StoreItem implements Serializable {
     @Override
     public String toString() {
         return "StoreItem{" +
-                "ID_ARTIKLA='" + ID_ARTIKLA + '\'' +
+                "SIFRA_ARTIKLA='" + SIFRA_ARTIKLA + '\'' +
                 ", NAZIV_ARTIKLA='" + NAZIV_ARTIKLA + '\'' +
                 ", OPIS='" + OPIS + '\'' +
                 ", POT_SLIKE='" + POT_SLIKE + '\'' +
